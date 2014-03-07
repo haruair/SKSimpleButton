@@ -1,0 +1,59 @@
+# SKSimpleButton
+
+SKSimpleButton is a simple button implementation for `SpriteKit`.
+
+## Adding to Your Project
+
+Manually add to your project:
+
+1. Add `SKSimpleButton.h`, and `SKSimpleButton.m` to your project.
+2. Add button action sounds.
+
+## Working with the Button
+
+Import `SKSimpleButton.h` first.
+
+```objective-c
+#import "SKSimpleButton.h"
+```
+
+Load two textures and initialize button with textures.
+
+```objective-c
+/* Add a button with textures */
+SKTextureAtlas * atlas = [SKTextureAtlas atlasNamed:@"button"];
+
+SKTexture * defaultTexture = [atlas textureNamed:@"button-home-off"];
+SKTexture * touchedTexture = [atlas textureNamed:@"button-home-on"];
+
+SKSimpleButton * homeButton = [[SKSimpleButton alloc] initWithDefaultTexture:defaultTexture
+                                                           andTouchedTexture:touchedTexture];
+
+/* set position and method */
+homeButton.position = CGPointMake(CGRectGetMidX(self.frame),
+                                  CGRectGetMidY(self.frame));
+```
+
+The button works with a block.
+
+```objective-c
+[homeButton setMethod:^{
+    myLabel.text = @"BOOM!";
+    myLabel.fontSize = myLabel.fontSize + 10.0;
+}];
+
+/* add button as a node */
+[self addChild:homeButton];
+```
+
+Easy as that. Actually, I wrote sample code for `SpriteKit` so if you want to see, check the repository.
+
+## Disclaimer
+
+SKSimpleButton is really simple implementation. It's for beginners such as myself. If you are professional, please improve this button or make new wonderful button.
+
+## Thanks
+
+I learned `SpriteKit` from [SpriteKit Tutorial for Beginners](http://www.raywenderlich.com/42699/spritekit-tutorial-for-beginners). Thanks for writing the articles at all.
+
+Also thanks to [Weird Meetup Members](http://we.weirdmeetup.com/team-members/) for helping me to learn Objective-C.
