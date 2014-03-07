@@ -20,8 +20,6 @@
     AnonBlock _returnMethod;
 }
 
-@synthesize size = _size;
-
 + (void)removeButtonPressed:(NSArray *)nodes {
     for (SKNode * node in nodes) {
         if ([node isKindOfClass:[self class]]) {
@@ -88,10 +86,12 @@
                                 restore:YES]] withKey:@"button-default"];
         
         [self addChild:_button];
-        
-        _size = _button.size;
     }
     return self;
+}
+
+-(CGSize) size {
+    return _button.size;
 }
 
 -(SKAction *)actionForKey:(NSString *)key {
